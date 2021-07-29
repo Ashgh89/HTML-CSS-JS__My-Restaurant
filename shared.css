@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+:root {
+  --dark-green: #0e4f1f;
+  --highlight-color: #ff1b68;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fjalla One", sans-serif;
+  margin: 0;
+}
+
+main {
+  min-height: calc(100vh - 3.5rem - 8rem);
+  margin-top: 3.5rem;
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s linear;
+}
+
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* background: rgba(13, 236, 188, 0.5); */
+  background: rgba(71, 89, 129, 0.986);
+  padding: 8px 16px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+}
+
+/* .main-header > div {
+  display: inline-block;
+  vertical-align: middle;
+} */
+
+.toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.2rem;
+  background: black;
+  display: block;
+  margin: 0.6rem 0;
+}
+
+.main-header__brand {
+  color: #0e4f1f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-header__brand img {
+  height: 3.5rem;
+  vertical-align: middle;
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.main-nav__item {
+  margin: 0 16px;
+  transition: transform 0.5s;
+  position: relative;
+}
+
+.main-nav__item:hover {
+  transform: scale(1.2);
+}
+
+.main-nav__item a,
+.mobile-nav__item a {
+  text-decoration: none;
+  color: rgba(252, 248, 240, 0.89);
+  text-align: center;
+  font-weight: bold;
+  padding: 3px 0px;
+}
+
+.main-nav__item:not(.main-nav__item--cta):after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #13cf32;
+  transform-origin: bottom left;
+  transition: transform 0.35s ease-out;
+  margin: -7px 0;
+}
+
+.main-nav__item:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.main-nav__item a:hover,
+.main-nav__itema:active {
+  color: rgb(230, 157, 21);
+}
+
+.main-nav__item--cta {
+  animation: wiggle 200ms 3s 8 alternate;
+}
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a {
+  color: rgba(252, 248, 240, 0.89);
+  background: rgb(21, 92, 7);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 3px solid black;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+  color: green;
+  background: white;
+  border: none;
+}
+
+.main-footer {
+  background: black;
+  padding: 32px;
+  border-top: 2px solid rgb(253, 253, 253);
+}
+
+.main-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-footer__link {
+  margin: 0.5rem 0;
+}
+
+.main-footer__link a {
+  color: white;
+  text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active {
+  color: #ccc;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.774);
+  width: 80%;
+  height: 100vh;
+}
+
+.mobile-nav__items {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-nav__item {
+  margin: 1rem 0;
+}
+
+.mobile-nav__item a {
+  font-size: 1.5rem;
+}
+
+.button {
+  background: #e67e22;
+  color: #333;
+  font: inherit;
+  border: 2.5px solid var(--dark-green);
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  background: white;
+  color: var(--dark-green);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.open {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (min-width: 40rem) {
+  .toggle-button {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+  }
+
+  .main-footer__link {
+    margin: 0 1rem;
+  }
+
+  .main-footer__links {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(10deg);
+  }
+}
